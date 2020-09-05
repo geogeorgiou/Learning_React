@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './App.css';
-import Radium, { StyleRoot } from 'radium';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -131,20 +130,18 @@ class App extends Component {
         }
 
         return (
-            <StyleRoot>
-                <div className="App">
-                    <h1>Hi I am A React Dev</h1>
-                    <p className={classes.join(' ')}>This is really working!</p>
-                    {/*<button onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button>*/}
-                    <button
-                        style={style}
-                        onClick={this.togglePersonsHandler}>Toggle Persons
-                    </button>
+            <div className="App">
+                <h1>Hi I am A React Dev</h1>
+                <p className={classes.join(' ')}>This is really working!</p>
+                {/*<button onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button>*/}
+                <button
+                    style={style}
+                    onClick={this.togglePersonsHandler}>Toggle Persons
+                </button>
 
-                    {persons}
+                {persons}
 
-                </div>
-            </StyleRoot>
+            </div>
 
 
             //   React.createElement('div', {className : 'App'},
@@ -154,7 +151,7 @@ class App extends Component {
     }
 }
 
-export default Radium(App);
+export default App;
 
 //React 16.8 feature -> HOOKS (only for functional based Components)
 //so to convert rename the class App extends Component to ES6 equivalent
