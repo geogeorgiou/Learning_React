@@ -1,6 +1,22 @@
 import React, {Component} from 'react';
 import './App.css';
+import styled from 'styled-components';
 import Person from './Person/Person';
+
+
+const StyledButton = styled.button`
+    background-color: green;
+    color: white;
+    font: inherit;
+    border: 1px solid blue;
+    padding: 8px;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: lightgreen;
+        color: black;            
+    }                                                 
+`;
 
 class App extends Component {
 
@@ -78,20 +94,6 @@ class App extends Component {
 
     render() {
 
-        //for inline styles
-        const style = {
-            backgroundColor: 'green',
-            color: 'white',
-            font: 'inherit',
-            border: '1px solid blue',
-            padding: '8px',
-            cursor: 'pointer',
-            ':hover': {
-                backgroundColor: 'lightgreen',
-                color: 'black'
-            }
-        };
-
         //the render method executes when React wants to render
         //so whatever code is inserted here it gets executed before rendering
 
@@ -134,10 +136,9 @@ class App extends Component {
                 <h1>Hi I am A React Dev</h1>
                 <p className={classes.join(' ')}>This is really working!</p>
                 {/*<button onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button>*/}
-                <button
-                    style={style}
-                    onClick={this.togglePersonsHandler}>Toggle Persons
-                </button>
+                <StyledButton onClick={this.togglePersonsHandler}>
+                    Toggle Persons
+                </StyledButton>
 
                 {persons}
 

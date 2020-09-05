@@ -24,12 +24,6 @@ const StyledDiv = styled.div`
 //ES6 variable feature
 const person = (props) =>{
 
-    const style = {
-        '@media (min-width: 500px)' : {
-            width: '450px'
-        }
-    };
-
     //and use of JSX syntax
     return (
         // <div className="Person" style={style}>
