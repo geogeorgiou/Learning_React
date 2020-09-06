@@ -10,6 +10,12 @@ import classes from './Person.css'
 //ES6 variable feature
 const person = (props) =>{
 
+    const rnd = Math.random();
+
+    if (rnd > 0.7){
+        throw new Error('Something went wrong!');
+    }
+
     //and use of JSX syntax
     return (
         // <div className="Person" style={style}>
