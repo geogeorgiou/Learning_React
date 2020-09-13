@@ -10,6 +10,8 @@ import classes from './Person.css'
 //ES6 variable feature
 const person = (props) =>{
 
+    console.log('[Person.js] rendering');
+
     //and use of JSX syntax
     return (
         // <div className="Person" style={style}>

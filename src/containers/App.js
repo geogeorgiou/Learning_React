@@ -8,6 +8,17 @@ import Person from '../components/Persons/Person/Person';
 
 class App extends Component {
 
+
+    //constructor with props will make sure that
+    //props is initialized correctly
+
+    constructor(props) {
+        super(props);
+        console.log('[App.js] constructor')
+    }
+
+
+
     //USE with care
     //only works in components (class based ones)
     //also in functional with Hooks
@@ -20,6 +31,20 @@ class App extends Component {
         ],
         otherState: 'some other value',
         showPersons: false
+    }
+
+    //Constructor >> getDerivedStateFromProps Lifecycle Hook
+    // >> Render Hook with all the components in it
+
+    static getDerivedStateFromProps(props, state){
+        console.log('[App.js] getDerivedStateFromProps', props);
+        return state;
+    }
+
+    //finally the component did mount Hook
+
+    componentDidMount() {
+        console.log('[App.js] componentDidMount');
     }
 
 
@@ -81,6 +106,9 @@ class App extends Component {
     }
 
     render() {
+
+        console.log('[App.js] render');
+
 
         //the render method executes when React wants to render
         //so whatever code is inserted here it gets executed before rendering
