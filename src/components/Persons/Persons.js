@@ -27,6 +27,11 @@ class Persons extends Component {
         console.log(snapshot)
     }
 
+    //executes write before we get rid of Persons component from the DOM
+    componentWillUnmount() {
+        console.log('[Persons.js] ComponentWIllUnmount');
+    }
+
 
     render() {
         console.log('[Persons.js] rendering....');

@@ -18,9 +18,23 @@ const cockpit = (props) => {
             alert('Saved data to cloud!');
         }, 1000);
 
+        //this particular anonymous function runs BEFORE useEffect
+        //but AFTER the first render cycle!!!
+        //Simply RUNS WHEN useEffect RUNS FOR THE LAST TIME SO TO SAY
+        return () => {
+            console.log('[Cockpit.js] Cleanup work in useEffect');
+        }
     }, []);
 
+    useEffect(() => {
+        console.log('[Cockpit.js] 2nd use effect');
 
+        //this has no [] as second argument so it will execute in every update cycle
+        return () => {
+            console.log('[Cockpit.js] Cleanup work in 2nd useEffect');
+        }
+
+    })
 
 
     //class Definitions
