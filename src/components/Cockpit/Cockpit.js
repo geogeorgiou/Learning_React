@@ -11,10 +11,12 @@ const cockpit = (props) => {
 
     //[props.persons] means that if it changes then execute the nested function
     //[] this tells React that useEffect has no dependencies (runs only the 1st time) but nested code can never re-run!!!
+
+    //FINALLY IT RUNS when Component is mounted and unmounted :)
     useEffect(() => {
         console.log('[Cockpit.js] use effect');
         //Http request here ...
-        setTimeout(() => {
+        const timer = setTimeout(() => {
             alert('Saved data to cloud!');
         }, 1000);
 
@@ -22,6 +24,8 @@ const cockpit = (props) => {
         //but AFTER the first render cycle!!!
         //Simply RUNS WHEN useEffect RUNS FOR THE LAST TIME SO TO SAY
         return () => {
+            clearTimeout(timer); //cancelling the alert when unmounting...
+
             console.log('[Cockpit.js] Cleanup work in useEffect');
         }
     }, []);
