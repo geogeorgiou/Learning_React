@@ -47,6 +47,20 @@ class App extends Component {
         console.log('[App.js] componentDidMount');
     }
 
+    //can be used for performance improvements
+
+    shouldComponentUpdate(nextProps, nextState) {
+        // console.log('[App.js] shouldComponentUpdate')
+        return true;
+    }
+
+
+    //fetching data through a server perhaps
+
+    componentDidUpdate() {
+        console.log('[App.js] componentDidUpdate');
+    }
+
 
     nameChangedHandler = (event, id) => {
 

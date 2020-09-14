@@ -1,7 +1,27 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import classes from "../../components/Cockpit/Cockpit.css";
 
 const cockpit = (props) => {
+
+    //pass a function to useEffect
+    //which executes in every render cycle of Cockpit
+
+    //in some essence it is componentDidMount and componentDidUpdate together
+    //can use this as many times I want
+
+    //[props.persons] means that if it changes then execute the nested function
+    //[] this tells React that useEffect has no dependencies (runs only the 1st time) but nested code can never re-run!!!
+    useEffect(() => {
+        console.log('[Cockpit.js] use effect');
+        //Http request here ...
+        setTimeout(() => {
+            alert('Saved data to cloud!');
+        }, 1000);
+
+    }, []);
+
+
+
 
     //class Definitions
     const assignedClasses = [];
