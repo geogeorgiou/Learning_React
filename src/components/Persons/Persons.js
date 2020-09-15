@@ -14,7 +14,10 @@ class Persons extends Component {
     //doing nothing is not an option here!
     shouldComponentUpdate(nextProps, nextState) {
         console.log('[Persons.js] shouldComponent Update')
-        return true;
+
+        //this is a shallow comparison of values
+        //you must update persons each time with the spread operator ...
+        return nextProps.persons !== this.props.persons;
     }
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
