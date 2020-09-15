@@ -1,5 +1,5 @@
 
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import Person from "./Person/Person";
 
 class Persons extends Component {
@@ -12,13 +12,18 @@ class Persons extends Component {
     // }
 
     //doing nothing is not an option here!
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log('[Persons.js] shouldComponent Update')
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     console.log('[Persons.js] shouldComponent Update')
+    //
+    //     //this is a shallow comparison of values
+    //     //you must update persons each time with the spread operator ...
+    //     return nextProps.persons !== this.props.persons;
+    // }
 
-        //this is a shallow comparison of values
-        //you must update persons each time with the spread operator ...
-        return nextProps.persons !== this.props.persons;
-    }
+    //should Component Update should be used if NOT all props need to be evaluated for change
+    //extend PureComponent for evaluation of change of all props
+    //and shouldComponentUpdate is pretty much useless
+
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
         console.log('[Persons.js] getSnapshotBeforeUpdate')
