@@ -2,7 +2,7 @@
 import React, {PureComponent} from 'react';
 import Person from "./Person/Person";
 
-class Persons extends Component {
+class Persons extends PureComponent {
 
     // static getDerivedStateFromProps(props, state){
     //
@@ -12,7 +12,7 @@ class Persons extends Component {
     // }
 
     //doing nothing is not an option here!
-    // shouldComponentUpdate(nextProps, nextState) {
+    // shouldComponentUpdate(nextProps, nextState) {s
     //     console.log('[Persons.js] shouldComponent Update')
     //
     //     //this is a shallow comparison of values
