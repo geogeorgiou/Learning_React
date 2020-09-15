@@ -16,7 +16,7 @@ const cockpit = (props) => {
     useEffect(() => {
         console.log('[Cockpit.js] use effect');
         //Http request here ...
-        const timer = setTimeout(() => {
+        setTimeout(() => {
             alert('Saved data to cloud!');
         }, 1000);
 
@@ -24,8 +24,6 @@ const cockpit = (props) => {
         //but AFTER the first render cycle!!!
         //Simply RUNS WHEN useEffect RUNS FOR THE LAST TIME SO TO SAY
         return () => {
-            clearTimeout(timer); //cancelling the alert when unmounting...
-
             console.log('[Cockpit.js] Cleanup work in useEffect');
         }
     }, []);
