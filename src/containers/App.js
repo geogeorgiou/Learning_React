@@ -4,7 +4,8 @@ import classes from './App.css';
 import Cockpit from '../components/Cockpit/Cockpit'
 import Persons from '../components/Persons/Persons'
 import Person from '../components/Persons/Person/Person';
-import WithClass from '../hoc/WithClass'
+import withClass from '../hoc/withClass'
+import Aux from '../hoc/Auxiliary'
 
 
 class App extends Component {
@@ -145,7 +146,8 @@ class App extends Component {
 
 
         return (
-            <WithClass classes={classes.App}>
+            <Aux>
+                 {/*<WithClass classes={classes.App}>*/}
                 <div >
                     <button
                         onClick={() =>
@@ -162,7 +164,9 @@ class App extends Component {
                     {persons}
 
                 </div>
-            </WithClass>
+                 {/*</WithClass>*/}
+            </Aux>
+
 
             //   React.createElement('div', {className : 'App'},
             //       React.createElement('h1', null , 'Does work now?')
@@ -171,7 +175,7 @@ class App extends Component {
     }
 }
 
-export default App;
+export default withClass(App, classes.App);
 
 //React 16.8 feature -> HOOKS (only for functional based Components)
 //so to convert rename the class App extends Component to ES6 equivalent
