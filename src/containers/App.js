@@ -4,6 +4,7 @@ import classes from './App.css';
 import Cockpit from '../components/Cockpit/Cockpit'
 import Persons from '../components/Persons/Persons'
 import Person from '../components/Persons/Person/Person';
+import WithClass from '../hoc/WithClass'
 
 
 class App extends Component {
@@ -144,23 +145,24 @@ class App extends Component {
 
 
         return (
-            <div className={classes.App}>
-            <button
-                onClick={() =>
-                {this.setState({showCockpit: false});
-                }}
-            >
-                Remove Cockpit</button>
-                {this.state.showCockpit ? <Cockpit
-                    title={this.props.appTitle}
-                    showPersons={this.state.showPersons}
-                    personsLength={this.state.persons.length}
-                    clicked={this.togglePersonsHandler}/> : null}
+            <WithClass classes={classes.App}>
+                <div >
+                    <button
+                        onClick={() =>
+                        {this.setState({showCockpit: false});
+                        }}
+                    >
+                        Remove Cockpit</button>
+                    {this.state.showCockpit ? <Cockpit
+                        title={this.props.appTitle}
+                        showPersons={this.state.showPersons}
+                        personsLength={this.state.persons.length}
+                        clicked={this.togglePersonsHandler}/> : null}
 
-                {persons}
+                    {persons}
 
-            </div>
-
+                </div>
+            </WithClass>
 
             //   React.createElement('div', {className : 'App'},
             //       React.createElement('h1', null , 'Does work now?')
