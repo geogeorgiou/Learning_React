@@ -33,7 +33,8 @@ class App extends Component {
         ],
         otherState: 'some other value',
         showPersons: false,
-        showCockpit: true
+        showCockpit: true,
+        changeCounter: 0
     }
 
     //Constructor >> getDerivedStateFromProps Lifecycle Hook
@@ -87,8 +88,16 @@ class App extends Component {
         const persons = [...this.state.persons];
         persons[personIndex] = person;
 
-        this.setState({
-            persons: persons
+        //So when doing set State while not relating to old state you can casually pass in the object
+
+        //we call setState synchronously here but it is not guaranteed that will execute immediately
+        //it will execute on schedule by React! the guaranteed way is with anonymous function + prevState
+
+        this.setState((prevState, props) => {
+            return {
+                persons: persons,
+                changeCounter: prevState.changeCounter+1
+            };
         });
 
     }
