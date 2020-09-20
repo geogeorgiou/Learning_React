@@ -3,9 +3,9 @@ import classes from './App.css';
 
 import Cockpit from '../components/Cockpit/Cockpit'
 import Persons from '../components/Persons/Persons'
-import Person from '../components/Persons/Person/Person';
 import withClass from '../hoc/withClass'
 import Aux from '../hoc/Auxiliary'
+import AuthContext from '../context/auth-context'
 
 
 class App extends Component {
@@ -170,15 +170,25 @@ class App extends Component {
                         }}
                     >
                         Remove Cockpit</button>
-                    {this.state.showCockpit ?
-                        <Cockpit
-                            login={this.loginHandler}
-                            title={this.props.appTitle}
-                            showPersons={this.state.showPersons}
-                            personsLength={this.state.persons.length}
-                            clicked={this.togglePersonsHandler}/> : null}
 
-                    {persons}
+                    {/*also have in mind that changing a value in Context does not trigger re-render cycle*/}
+                    <AuthContext.Provider value={
+                        {
+                            authenticated: this.state.authenticated,
+                            login: this.loginHandler
+                        }
+                    }>
+                        {this.state.showCockpit ?
+                            <Cockpit
+                                login={this.loginHandler}
+                                title={this.props.appTitle}
+                                showPersons={this.state.showPersons}
+                                personsLength={this.state.persons.length}
+                                clicked={this.togglePersonsHandler}/> : null}
+
+                        {persons}
+                    </AuthContext.Provider>
+
 
                 </div>
                  {/*</WithClass>*/}
