@@ -33,6 +33,7 @@ class Person extends Component {
             // instead of <div className="Person" style={style}> use Aux hoc
             //INSTEAD of Aux hack you can use the built in React.Fragment or Fragment if you import Fragment
             <Aux>
+                {this.props.isAuth ? <p>Authenticated</p> : <p>Please log in!</p>}
                 <p key="i1" onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old!</p>
                 <p key="i2">{this.props.children}</p>
                 <input
@@ -41,7 +42,8 @@ class Person extends Component {
                     ref={this.inputElementRef} //setting up a ref
                     type="text"
                     onChange={this.props.changed}
-                    value={this.props.name}/>
+                    value={this.props.name}
+                />
             </Aux>
 
         );
