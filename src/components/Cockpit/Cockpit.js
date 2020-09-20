@@ -1,7 +1,9 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useRef} from 'react'
 import classes from "../../components/Cockpit/Cockpit.css";
 
 const cockpit = (props) => {
+
+    const toggleBtnRef = useRef(null);
 
     //pass a function to useEffect
     //which executes in every render cycle of Cockpit
@@ -16,9 +18,11 @@ const cockpit = (props) => {
     useEffect(() => {
         console.log('[Cockpit.js] use effect');
         //Http request here ...
-        setTimeout(() => {
-            alert('Saved data to cloud!');
-        }, 1000);
+        // setTimeout(() => {
+        //     alert('Saved data to cloud!');
+        // }, 1000);
+
+        toggleBtnRef.current.click(); //code inside the useEffect executes after render() so place ref here!
 
         //this particular anonymous function runs BEFORE useEffect
         //but AFTER the first render cycle!!!
@@ -59,6 +63,7 @@ const cockpit = (props) => {
             <h1>{props.title}</h1>
             <p className={assignedClasses.join(' ')}>This is really working!</p>
             <button
+                ref={toggleBtnRef}
                 className={btnClass}
                 onClick={props.clicked} >
                 Toggle Persons
