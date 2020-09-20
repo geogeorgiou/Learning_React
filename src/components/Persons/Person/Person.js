@@ -14,6 +14,16 @@ import classes from './Person.css'
 //ES6 variable feature
 class Person extends Component {
 
+    constructor(props) {
+        super(props);
+        this.inputElementRef = React.createRef();
+    }
+
+    componentDidMount() {
+        // this.inputElement.focus();
+        this.inputElementRef.current.focus();
+    }
+
     render() {
         console.log('[Person.js] rendering');
 
@@ -25,7 +35,13 @@ class Person extends Component {
             <Aux>
                 <p key="i1" onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old!</p>
                 <p key="i2">{this.props.children}</p>
-                <input key="i3" type="text" onChange={this.props.changed} value={this.props.name}/>
+                <input
+                    key="i3"
+                    // ref={(inputEl) => {this.inputElement = inputEl}} //setting up a ref
+                    ref={this.inputElementRef} //setting up a ref
+                    type="text"
+                    onChange={this.props.changed}
+                    value={this.props.name}/>
             </Aux>
 
         );
